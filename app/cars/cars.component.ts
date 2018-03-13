@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-cars',
@@ -7,35 +7,35 @@ import { Component } from '@angular/core';
 })
 export class CarsComponent {
 
-carName = '';
-carYear = 2017;
+
 
 cars: [{name: string, year: number}] = [{
   name: 'Ford',
   year: 2015
-}, {
-  name: 'Mazda',
-  year: 2010
-}, {
-  name: 'Audi',
-  year: 2017
-}
-
+}, 
+// {
+//   name: 'Mazda',
+//   year: 2010
+// }, {
+//   name: 'Audi',
+//   year: 2017
+// }
 ];
 
 constructor() {
 
 }
 
-
-addCar(){
-  this.cars.push({
-    name: this.carName,
-    year: this.carYear
-  });
-  this.carName = '';
-  this.carYear = 2017;
+updateCarList(car: {name: string, year: number}){
+  this.cars.push(car);
 }
 
+changeCarName(){
+  this.cars[0].name = 'New car name!';
+}
+
+deleteCar(){
+  this.cars.splice(0, 1);
+}
 
 }

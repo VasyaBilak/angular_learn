@@ -1,8 +1,18 @@
-<input type="text" class="form-control" [(ngModel)]="carName" >
-<input type="text" class="form-control" [(ngModel)]="carYear" >
-<button class="btn btn-primary" (click)="addCar()" >Add car</button>
+<p>Форма добалення машин</p>
+<hr>
+<app-add-car (onAddCar)="updateCarList($event)" ></app-add-car>  
+
+
+<button class="btn btn-success" (click)="changeCarName()" >Змінити назву машини</button>
+<button class="btn btn-danger" (click)="deleteCar()">Видалити машину</button>
 <hr>
 
-<app-car *ngFor="let car of cars" [carItem]="car" ></app-car>
+<div class="list-group">
+    <app-car class="list-group-item" *ngFor="let car of cars" [carItem]="car" [name]="car.name">        
+        <h4 #carHeading class="list-group-item-heading">Марка: {{ car.name }}</h4>
+        <p class="list-group-item-text"> Рік: {{ car.year }} </p>
+    </app-car>
+
+</div>
 
 
